@@ -1,0 +1,143 @@
+/* ==========================================================================
+   AgriKart - Base Styles & Theme
+   ========================================================================== */
+
+:root {
+  --ak-green-900: #1e3d24;
+  --ak-green-700: #2f6b34;
+  --ak-green-600: #3d8b43;
+  --ak-green-500: #4c8c4a;
+  --ak-green-100: #e8f4e6;
+  --ak-green-50: #f5faf4;
+  --ak-accent: #e8a33d;
+  --ak-text: #223224;
+  --ak-text-muted: #6b7a6c;
+  --ak-border: #e1e9df;
+  --ak-danger: #c94b4b;
+  --ak-radius: 14px;
+  --ak-shadow: 0 4px 18px rgba(30, 61, 36, 0.08);
+  --ak-shadow-hover: 0 10px 28px rgba(30, 61, 36, 0.14);
+  font-size: 16px;
+}
+
+body {
+  font-family: "Segoe UI", "Poppins", Arial, sans-serif;
+  color: var(--ak-text);
+  background: #fbfdfb;
+  padding-top: 108px;
+}
+
+a { text-decoration: none; }
+.text-green { color: var(--ak-green-700) !important; }
+.bg-brand { background: var(--ak-green-700) !important; }
+
+/* ---------- Buttons ---------- */
+.btn-brand {
+  background: var(--ak-green-700);
+  border: 1px solid var(--ak-green-700);
+  color: #fff;
+  border-radius: 999px;
+  font-weight: 600;
+  padding: .6rem 1.4rem;
+  transition: .2s ease;
+}
+.btn-brand:hover { background: var(--ak-green-900); color: #fff; }
+.btn-outline-brand {
+  border: 1.5px solid var(--ak-green-700);
+  color: var(--ak-green-700);
+  border-radius: 999px;
+  font-weight: 600;
+  padding: .55rem 1.35rem;
+  background: transparent;
+}
+.btn-outline-brand:hover { background: var(--ak-green-700); color: #fff; }
+.btn-accent {
+  background: var(--ak-accent);
+  border: 1px solid var(--ak-accent);
+  color: #3a2a05;
+  border-radius: 999px;
+  font-weight: 700;
+}
+.btn-accent:hover { filter: brightness(0.95); color: #3a2a05; }
+
+/* ---------- Top announcement bar ---------- */
+.announce-bar {
+  background: var(--ak-green-900);
+  color: #dff0da;
+  font-size: .82rem;
+  text-align: center;
+  padding: 6px 0;
+  letter-spacing: .2px;
+}
+
+/* ---------- Navbar ---------- */
+.ak-navbar {
+  position: fixed;
+  top: 26px;
+  left: 0; right: 0;
+  z-index: 1030;
+  background: #fff;
+  box-shadow: var(--ak-shadow);
+}
+.ak-logo {
+  font-weight: 800;
+  font-size: 1.5rem;
+  color: var(--ak-green-700);
+  display: flex; align-items: center; gap: 6px;
+}
+.ak-logo span.dot { color: var(--ak-accent); }
+.ak-cat-bar {
+  background: var(--ak-green-50);
+  border-top: 1px solid var(--ak-border);
+  font-size: .9rem;
+}
+.ak-cat-bar a { color: var(--ak-text); padding: 8px 12px; display: inline-block; }
+.ak-cat-bar a:hover { color: var(--ak-green-700); }
+.icon-badge { position: relative; }
+.icon-badge .badge-count {
+  position: absolute; top: -6px; right: -10px;
+  background: var(--ak-accent); color: #3a2a05;
+  font-size: .65rem; font-weight: 700;
+  border-radius: 999px; padding: 1px 6px;
+}
+
+/* ---------- Hero ---------- */
+.hero {
+  background: linear-gradient(120deg, var(--ak-green-100), #fdf6e8);
+  border-radius: var(--ak-radius);
+  padding: 3.5rem 2.5rem;
+  overflow: hidden;
+}
+.hero h1 { font-weight: 800; color: var(--ak-green-900); }
+
+/* ---------- Cards ---------- */
+.section-title {
+  font-weight: 800;
+  color: var(--ak-green-900);
+  margin-bottom: 1.2rem;
+}
+
+/* ---------- Footer ---------- */
+footer.ak-footer {
+  background: var(--ak-green-900);
+  color: #d9e8d6;
+  margin-top: 4rem;
+}
+footer.ak-footer a { color: #cfe3cb; }
+footer.ak-footer a:hover { color: #fff; }
+footer.ak-footer h6 { color: #fff; font-weight: 700; }
+
+/* ---------- Utility ---------- */
+.rounded-ak { border-radius: var(--ak-radius) !important; }
+.shadow-ak { box-shadow: var(--ak-shadow) !important; }
+.muted { color: var(--ak-text-muted); }
+.price-strike { text-decoration: line-through; color: var(--ak-text-muted); font-size: .85rem; }
+.price-final { font-weight: 700; color: var(--ak-green-900); font-size: 1.1rem; }
+.discount-badge { color: #1c7a3c; font-weight: 600; font-size: .82rem; }
+.rating-pill {
+  background: var(--ak-green-700); color: #fff; font-size: .78rem;
+  border-radius: 6px; padding: 1px 7px; display: inline-flex; align-items: center; gap: 3px;
+}
+.section-py { padding: 2.5rem 0; }
+.empty-state { text-align: center; padding: 4rem 1rem; color: var(--ak-text-muted); }
+.empty-state i { font-size: 3.5rem; color: var(--ak-green-500); margin-bottom: 1rem; display: block; }

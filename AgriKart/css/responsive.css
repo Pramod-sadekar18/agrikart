@@ -1,0 +1,26 @@
+/* ==========================================================================
+   AgriKart - Responsive Overrides
+   ========================================================================== */
+
+@media (max-width: 991.98px) {
+  body { padding-top: 96px; }
+  .ak-navbar { top: 26px; }
+  .ak-cat-bar { display: none !important; }
+  .hero { padding: 2rem 1.2rem; text-align: center; }
+  .auth-card { margin: 1rem; padding: 1.5rem; }
+}
+
+@media (max-width: 767.98px) {
+  .cart-row, .wishlist-row { flex-wrap: wrap; }
+  .cart-row img, .wishlist-row img { width: 64px; height: 64px; }
+  .order-timeline li { min-width: 80px; font-size: .72rem; }
+  #toastHost { left: 12px; right: 12px; top: 100px; }
+  .ak-toast { min-width: 0; width: 100%; }
+  .stat-card .num { font-size: 1.3rem; }
+}
+
+@media (max-width: 575.98px) {
+  .hero h1 { font-size: 1.6rem; }
+  .section-title { font-size: 1.2rem; }
+  .product-card .pc-name { font-size: .88rem; }
+}

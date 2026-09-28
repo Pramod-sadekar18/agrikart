@@ -1,0 +1,3 @@
+"""
+AgriKart Backend Package
+"""

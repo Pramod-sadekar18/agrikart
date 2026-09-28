@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>My Profile - AgriKart</title>
+<link rel="icon" href="assets/images/placeholder.svg">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.css" rel="stylesheet">
+<link href="css/style.css" rel="stylesheet">
+<link href="css/components.css" rel="stylesheet">
+<link href="css/responsive.css" rel="stylesheet">
+</head>
+<body>
+
+<div id="navbar-placeholder"></div>
+
+<div class="container section-py">
+  <div class="row g-4">
+    <div class="col-lg-3"><div class="account-sidebar" id="accountSidebar"></div></div>
+    <div class="col-lg-9">
+      <h3 class="section-title">My Profile</h3>
+      <div class="filter-box" style="max-width:520px">
+        <div class="text-center mb-3">
+          <i class="bi bi-person-circle" style="font-size:4rem;color:var(--ak-green-600)"></i>
+        </div>
+        <form id="profileForm">
+          <div class="mb-3">
+            <label class="form-label">Full Name</label>
+            <input type="text" class="form-control" name="name" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            <input type="email" class="form-control" name="email" required>
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Mobile Number</label>
+            <input type="tel" class="form-control" name="mobile">
+          </div>
+          <button class="btn btn-brand" type="submit">Save Changes</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="footer-placeholder"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+<script src="js/data.js"></script>
+<script src="js/main.js"></script>
+<script src="js/account.js"></script>
+<script src="js/auth.js"></script>
+<script>document.addEventListener("DOMContentLoaded", initProfilePage);</script>
+</body>
+</html>
