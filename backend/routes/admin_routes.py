@@ -228,42 +228,104 @@ def admin_products():
     except (Error, ValueError, TypeError):
         return jsonify({"success": False, "message": "Could not load products."}), 500
 
-
 def write_product(product, product_id=None):
     with get_db_connection() as connection:
         cursor = connection.cursor()
-        cursor.execute("SELECT id FROM categories WHERE id = %s", (product["category_id"],))
+
+        cursor.execute(
+            "SELECT id FROM categories WHERE id = %s",
+            (product["category_id"],)
+        )
+
         if cursor.fetchone() is None:
             cursor.close()
             return None
 
-        columns = (
-            "name", "category_id", "subcategory", "brand", "price", "original_price",
-            "discount", "stock", "stock_status", "image", "description", "features",
-            "specifications", "seller",
+        values = (
+            product["name"],
+            product["category_id"],
+            product["subcategory"],
+            product["brand"],
+            product["price"],
+            product["original_price"],
+            product["discount"],
+            product["stock"],
+            product["stock_status"],
+            product["image"],
+            product["description"],
+            product["features"],
+            product["specifications"],
+            product["seller"],
         )
+
         if product_id is None:
-            placeholders = ", ".join(["%s"] * len(columns))
+
             cursor.execute(
-                f"INSERT INTO products ({', '.join(columns)}) VALUES ({placeholders})",
-                tuple(product[column] for column in columns),
+                """
+                INSERT INTO products (
+                    name,
+                    category_id,
+                    subcategory,
+                    brand,
+                    price,
+                    original_price,
+                    discount,
+                    stock,
+                    stock_status,
+                    image,
+                    description,
+                    features,
+                    specifications,
+                    seller
+                )
+                VALUES (
+                    %s, %s, %s, %s, %s, %s, %s,
+                    %s, %s, %s, %s, %s, %s, %s
+                )
+                """,
+                values,
             )
+
             product_id = cursor.lastrowid
+
         else:
-            cursor.execute("SELECT id FROM products WHERE id = %s", (product_id,))
+
+            cursor.execute(
+                "SELECT id FROM products WHERE id = %s",
+                (product_id,)
+            )
+
             if cursor.fetchone() is None:
                 cursor.close()
                 return False
-            assignments = ", ".join(f"{column} = %s" for column in columns)
+
             cursor.execute(
-                f"UPDATE products SET {assignments} WHERE id = %s",
-                tuple(product[column] for column in columns) + (product_id,),
+                """
+                UPDATE products
+                SET
+                    name = %s,
+                    category_id = %s,
+                    subcategory = %s,
+                    brand = %s,
+                    price = %s,
+                    original_price = %s,
+                    discount = %s,
+                    stock = %s,
+                    stock_status = %s,
+                    image = %s,
+                    description = %s,
+                    features = %s,
+                    specifications = %s,
+                    seller = %s
+                WHERE id = %s
+                """,
+                values + (product_id,),
             )
 
         connection.commit()
         cursor.close()
-    return product_id
 
+    return product_id
 
 @admin_bp.post("/api/admin/products")
 @admin_required
