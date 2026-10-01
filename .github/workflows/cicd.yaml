@@ -69,14 +69,15 @@ jobs:
         run: |
           docker build \
             -t pramodsadekar1718/agrikart:backend \
-            ./backend
+            -f backend/Dockerfile \
+            .
 
       - name: Build frontend image
         run: |
           docker build \
             -t pramodsadekar1718/agrikart:frontend \
-            ./frontend
-
+            -f frontend/Dockerfile \
+            .
 
   # =========================
   # 3. DOCKER IMAGE SECURITY
