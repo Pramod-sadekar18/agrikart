@@ -76,6 +76,9 @@ jobs:
   # =========================
   # 3. PUSH TO DOCKER HUB
   # =========================
+    # =========================
+  # 3. PUSH TO DOCKER HUB
+  # =========================
   docker-push:
     name: Push Image to Docker Hub
     runs-on: ubuntu-latest
@@ -91,13 +94,26 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
 
+      - name: Set image tag
+        id: image-tag
+        run: |
+          echo "TAG=backend-${GITHUB_SHA::7}" >> "$GITHUB_OUTPUT"
+
       - name: Build backend image
         run: |
           docker build --pull --no-cache \
-            -t pramodsadekar1718/agrikart:backend \
+            -t pramodsadekar1718/agrikart:${{ steps.image-tag.outputs.TAG }} \
             -f backend/Dockerfile \
             .
 
-      - name: Push backend image
+      - name: Push versioned backend image
         run: |
+          docker push pramodsadekar1718/agrikart:${{ steps.image-tag.outputs.TAG }}
+
+      - name: Also update latest backend tag
+        run: |
+          docker tag \
+            pramodsadekar1718/agrikart:${{ steps.image-tag.outputs.TAG }} \
+            pramodsadekar1718/agrikart:backend
+
           docker push pramodsadekar1718/agrikart:backend
