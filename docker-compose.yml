@@ -17,9 +17,7 @@ services:
       retries: 20
 
   backend:
-    build:
-      context: .
-      dockerfile: backend/Dockerfile
+    image: pramodsadekar1718/agrikart:backend-e8deed7
     restart: unless-stopped
     env_file:
       - backend/.env
